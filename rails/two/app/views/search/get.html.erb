@@ -1,0 +1,29 @@
+<h1>Search Projects</h1>
+<p>Searching projects by search term <%= "#{@search_term}" %></p>
+<p>found <%= @projects.count %> projects...
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.title %></td>
+        <td><%= project.description %></td>
+        <td><%= project.place %>
+			<% if project.allow_remote %>
+				(allows remote)
+			<% end %>
+		</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<p>
+<%= link_to "Back", projects_path %>
+</p>

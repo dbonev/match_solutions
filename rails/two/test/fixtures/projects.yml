@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: "Test Project 1"
+  description: "Test Project 1"
+  place: Bulgaria
+  allow_remote: false
+
+two:
+  title: "Test Project 2"
+  description: "Test Project 2"
+  place: London
+  allow_remote: true
