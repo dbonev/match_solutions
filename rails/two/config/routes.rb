@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :quotations
 
   get 'search/get'
+  get 'projects/search'
 
   resources :projects
 

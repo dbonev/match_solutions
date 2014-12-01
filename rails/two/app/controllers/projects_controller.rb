@@ -64,6 +64,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def search
+  	@search_term = params[:q]
+	# we should use parametrized query here
+	@projects = Project.where("title like \"%#{@search_term}%\" OR description like \"%#{@search_term}%\"")
+	render :index
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project

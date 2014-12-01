@@ -2,12 +2,17 @@
 
 
 <div id="search">
-<%= form_tag(url_for(:controller => "search", :action => "get"), method: "get") do %>
+<%= form_tag(url_for(:controller => :projects, :action => :search), method: "get") do %>
   <%= label_tag(:q, "Search for:") %>
-  <%= text_field_tag(:q) %>
+  <%= text_field_tag(:q, params[:q]) %>
   <%= submit_tag("Search") %>
 <% end %>
 </div>
+
+<% if @search_term %>
+	<div>Found <%= @projects.count %> projects matching <%= @search_term %>. <%= link_to 'Clear Search', :controller => :projects, :action => :index %></div>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -22,7 +27,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.title %></td>
-        <td><%= project.description %></td>
+        <td><%= sanitize project.description[0..50] %>...</td>
         <td><%= project.place %>
 			<% if project.allow_remote %>
 				(allows remote)
