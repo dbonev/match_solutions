@@ -7,6 +7,14 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  def search
+  	@search_term = params[:q]
+	# we should use parametrized query here
+	@projects = Project.where("title like \"%#{@search_term}%\"")
+	flash[:notice] = "Found #{@projects.count} projects matching #{@search_term}"
+	render :index
+  end
+
   # GET /projects/1
   # GET /projects/1.json
   def show

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'search/get'
+  get 'projects/search'
 
   resources :projects
 
