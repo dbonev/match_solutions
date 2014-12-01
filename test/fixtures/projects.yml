@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: dimitar.bonev@gmail.com
+  description: MyString
+  location: MyString
+  created_at: 2014-12-01 15:16:54
+
+two:
+  name: MyString
+  email: dimitar.bonev@gmail.com
+  description: MyString
+  location: MyString
+  created_at: 2014-12-01 15:16:54
