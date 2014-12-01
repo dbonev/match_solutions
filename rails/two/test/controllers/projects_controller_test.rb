@@ -49,4 +49,12 @@ class ProjectsControllerTest < ActionController::TestCase
 
     assert_redirected_to projects_path
   end
+  test "should get search" do
+    search_term = "Test"
+    get :search, :q => search_term
+    assert_response :success
+	assert assigns(:projects).count > 0, "We should have found something in search by #{search_term}"
+	assert assigns(:search_term) == search_term, "Didn't assign search term properly"
+	#assert assigns(:notice).count > 0
+  end
 end
