@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @quotation.project %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @quotation.created_at %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @quotation.description %>
+</p>
+
+<%= link_to 'Edit', edit_quotation_path(@quotation) %> |
+<%= link_to 'Back', quotations_path %>
