@@ -6,7 +6,7 @@ class SubcontractorsController < ApplicationController
 
   def set_link_prefix
   	 @current_link = subcontractor_params[:link]
-	 if !@current_link.starts_with?
+	 if !@current_link.starts_with? "http://"
 		 @current_link = "http://#{@current_link}"
 	 end
   end
@@ -32,8 +32,12 @@ class SubcontractorsController < ApplicationController
 		@subcontractor = Subcontractor.new
 	else 
 		@subcontractor = current_user.subcontractor
-		render edit
-		return
+		if @subcontractor == nil
+			@subcontractor = Subcontractor.new
+		elsif
+			render edit
+			return
+		end
 	end
   end
 
