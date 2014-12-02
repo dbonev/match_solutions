@@ -1,11 +1,14 @@
 <h1>Listing projects</h1>
 
-
 <div id="search">
 <%= form_tag(url_for(:controller => :projects, :action => :search), method: "get") do %>
   <%= label_tag(:q, "Search for:") %>
   <%= text_field_tag(:q, params[:q]) %>
   <%= submit_tag("Search") %>
+<% end %>
+
+<% if @search_term %>
+<p>Found <%= @projects.count %> projects containing <%= @search_term %></p>
 <% end %>
 </div>
 
@@ -16,6 +19,7 @@
 <table>
   <thead>
     <tr>
+      <th>Posted On</th>
       <th>Title</th>
       <th>Description</th>
       <th>Location</th>
@@ -26,6 +30,7 @@
   <tbody>
     <% @projects.each do |project| %>
       <tr>
+        <td><%= project.created_at.strftime("%Y/%m/%d") %></td>
         <td><%= project.title %></td>
         <td><%= sanitize project.description[0..50] %>...</td>
         <td><%= project.place %>
@@ -33,7 +38,7 @@
 				(allows remote)
 			<% end %>
 		</td>
-        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to 'View', project %></td>
         <td><%= link_to 'Edit', edit_project_path(project) %></td>
         <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

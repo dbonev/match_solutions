@@ -7,14 +7,6 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
-  def search
-  	@search_term = params[:q]
-	# we should use parametrized query here
-	@projects = Project.where("title like \"%#{@search_term}%\"")
-	flash[:notice] = "Found #{@projects.count} projects matching #{@search_term}"
-	render :index
-  end
-
   # GET /projects/1
   # GET /projects/1.json
   def show
@@ -33,11 +25,11 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(project_params)
-	@project.created_at = Time.now
-	@project.updated_at = Time.now
+	@project.created_at = DateTime.now
 
     respond_to do |format|
       if @project.save
+		ProjectMailer.welcome_email(@project).deliver
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
@@ -50,7 +42,6 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-	@project.updated_at = Time.now
     respond_to do |format|
       if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
@@ -72,12 +63,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def search
-  	@search_term = params[:q]
-	# we should use parametrized query here
-	@projects = Project.where("title like \"%#{@search_term}%\" OR description like \"%#{@search_term}%\"")
-	render :index
-  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
@@ -86,6 +71,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:title, :description, :place, :allow_remote)
+      params.require(:project).permit(:name, :email, :description, :location, :created_at)
     end
 end

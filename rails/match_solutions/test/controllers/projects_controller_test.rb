@@ -18,10 +18,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
   test "should create project" do
     assert_difference('Project.count') do
-      post :create, project: { description: @project.description, title: @project.title, place: @project.place, allow_remote: @project.allow_remote  }
-	  new_project = Project.all.last
-	  assert "Timestamp differs", new_project.created_at != Time.now
-
+      post :create, project: { created_at: @project.created_at, description: @project.description, email: @project.email, location: @project.location, name: @project.name }
     end
 
     assert_redirected_to project_path(assigns(:project))
@@ -38,7 +35,7 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should update project" do
-    patch :update, id: @project, project: { description: @project.description, title: @project.title }
+    patch :update, id: @project, project: { created_at: @project.created_at, description: @project.description, email: @project.email, location: @project.location, name: @project.name }
     assert_redirected_to project_path(assigns(:project))
   end
 
@@ -48,13 +45,5 @@ class ProjectsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to projects_path
-  end
-  test "should get search" do
-    search_term = "Test"
-    get :search, :q => search_term
-    assert_response :success
-	assert assigns(:projects).count > 0, "We should have found something in search by #{search_term}"
-	assert assigns(:search_term) == search_term, "Didn't assign search term properly"
-	#assert assigns(:notice).count > 0
   end
 end
