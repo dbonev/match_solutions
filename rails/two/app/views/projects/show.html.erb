@@ -10,5 +10,11 @@
   <%= @project.description %>
 </p>
 
+<%= @project.quotations.count %> applications for this project so far.
+<% @project.quotations.each do |q| %>
+<p><% q.description %></p>
+<% end %>
+<%= link_to 'Submit Application', :controller => :quotations, :action => :create %>
+
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

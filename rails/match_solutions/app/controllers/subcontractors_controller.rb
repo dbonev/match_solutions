@@ -1,10 +1,23 @@
 class SubcontractorsController < ApplicationController
+  include CurrentUser
   before_action :set_subcontractor, only: [:show, :edit, :update, :destroy]
+  before_action :set_link_prefix, only: [:create, :update]
+
+  def set_link_prefix
+  	 @current_link = subcontractor_params[:link]
+	 if !@current_link.starts_with?
+		 @current_link = "http://#{@current_link}"
+	 end
+  end
 
   # GET /subcontractors
   # GET /subcontractors.json
   def index
-    @subcontractors = Subcontractor.all
+	if params[:id]
+		render show
+	else 
+		@subcontractors = Subcontractor.all
+	end
   end
 
   # GET /subcontractors/1
@@ -26,9 +39,19 @@ class SubcontractorsController < ApplicationController
   def create
     @subcontractor = Subcontractor.new(subcontractor_params)
 	@subcontractor.created_at = DateTime.now
+	@subcontractor.link = @current_link
+
+	user_params = {
+		email: @subcontractor.email,
+		password: @subcontractor.password
+	}
+	get_create_current_user(user_params)
+
+	@subcontractor.user = @current_user
 
     respond_to do |format|
       if @subcontractor.save
+		ProjectMailer.subcontractor_email(@subcontractor).deliver
         format.html { redirect_to @subcontractor, notice: 'Subcontractor was successfully created.' }
         format.json { render :show, status: :created, location: @subcontractor }
       else
@@ -70,6 +93,6 @@ class SubcontractorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def subcontractor_params
-      params.require(:subcontractor).permit(:name, :email, :skills, :company_size, :created_at, :location, :link, :description)
+      params.require(:subcontractor).permit(:name, :email, :skills, :company_size, :created_at, :location, :link, :description, :password)
     end
 end

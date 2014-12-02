@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130195220) do
+ActiveRecord::Schema.define(version: 20141201101115) do
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -21,5 +21,14 @@ ActiveRecord::Schema.define(version: 20141130195220) do
     t.string   "place"
     t.boolean  "allow_remote"
   end
+
+  create_table "quotations", force: true do |t|
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.string   "description"
+    t.datetime "updated_at"
+  end
+
+  add_index "quotations", ["project_id"], name: "index_quotations_on_project_id"
 
 end

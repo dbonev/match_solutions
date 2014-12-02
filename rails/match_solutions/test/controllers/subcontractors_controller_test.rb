@@ -18,7 +18,18 @@ class SubcontractorsControllerTest < ActionController::TestCase
 
   test "should create subcontractor" do
     assert_difference('Subcontractor.count') do
-      post :create, subcontractor: { company_size: @subcontractor.company_size, created_at: @subcontractor.created_at, email: @subcontractor.email, location: @subcontractor.location, name: @subcontractor.name, skills: @subcontractor.skills, description: @subcontractor.description }
+      post :create, subcontractor: { company_size: @subcontractor.company_size, created_at: @subcontractor.created_at, email: @subcontractor.email + "1", location: @subcontractor.location, name: @subcontractor.name, skills: @subcontractor.skills, description: @subcontractor.description, password: "passpass", link: @subcontractor.link }
+    end
+
+    assert_redirected_to subcontractor_path(assigns(:subcontractor))
+  end
+
+  test "should preffix link" do
+    assert_difference('Subcontractor.count') do
+	  old_link = "getqlibri.com"
+      post :create, subcontractor: { company_size: @subcontractor.company_size, created_at: @subcontractor.created_at, email: @subcontractor.email + "1", location: @subcontractor.location, name: @subcontractor.name, skills: @subcontractor.skills, description: @subcontractor.description, password: "passpass", link: old_link}
+	  new_sub_contractor = Subcontractor.where("email = \"" + @subcontractor.email + "1" + "\"")[0]
+	  assert new_sub_contractor.link == "http://" + old_link, "Link not correct. New link is: #{new_sub_contractor.link}"
     end
 
     assert_redirected_to subcontractor_path(assigns(:subcontractor))
@@ -35,7 +46,7 @@ class SubcontractorsControllerTest < ActionController::TestCase
   end
 
   test "should update subcontractor" do
-    patch :update, id: @subcontractor, subcontractor: { company_size: @subcontractor.company_size, created_at: @subcontractor.created_at, email: @subcontractor.email, location: @subcontractor.location, name: @subcontractor.name, skills: @subcontractor.skills, description: @subcontractor.description }
+    patch :update, id: @subcontractor, subcontractor: { company_size: @subcontractor.company_size, created_at: @subcontractor.created_at, email: @subcontractor.email, location: @subcontractor.location, name: @subcontractor.name, skills: @subcontractor.skills, description: @subcontractor.description, password: "passpass", link: @subcontractor.link}
     assert_redirected_to subcontractor_path(assigns(:subcontractor))
   end
 
