@@ -1,5 +1,6 @@
 class SubcontractorsController < ApplicationController
   include CurrentUser
+  before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :index]
   before_action :set_subcontractor, only: [:show, :edit, :update, :destroy]
   before_action :set_link_prefix, only: [:create, :update]
 
@@ -27,7 +28,13 @@ class SubcontractorsController < ApplicationController
 
   # GET /subcontractors/new
   def new
-    @subcontractor = Subcontractor.new
+	if !logged_in?
+		@subcontractor = Subcontractor.new
+	else 
+		@subcontractor = current_user.subcontractor
+		render edit
+		return
+	end
   end
 
   # GET /subcontractors/1/edit
@@ -94,5 +101,12 @@ class SubcontractorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def subcontractor_params
       params.require(:subcontractor).permit(:name, :email, :skills, :company_size, :created_at, :location, :link, :description, :password)
+    end
+
+	def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to url_for login_url
+      end
     end
 end
