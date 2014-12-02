@@ -2,7 +2,8 @@
 
 one:
   name: MyString
-  email: dimitar@getqlibri.com
+  email: dimitar.bonev1@getqlibri.com
+  link: getqlibri.com
   skills: MyString
   company_size: MyString
   created_at: 2014-12-01 15:27:58
@@ -11,7 +12,8 @@ one:
 
 two:
   name: MyString
-  email: dimitar@getqlibri.com
+  email: dimitar.bonev@getqlibri.com
+  link: getqlibri.com
   skills: MyString
   company_size: MyString
   created_at: 2014-12-01 15:27:58
