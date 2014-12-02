@@ -13,7 +13,11 @@ class SubcontractorsController < ApplicationController
   # GET /subcontractors
   # GET /subcontractors.json
   def index
-    @subcontractors = Subcontractor.all
+	if params[:id]
+		render show
+	else 
+		@subcontractors = Subcontractor.all
+	end
   end
 
   # GET /subcontractors/1

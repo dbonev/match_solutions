@@ -7,7 +7,7 @@
 
 <p>
   <strong>Website</strong>
-  <%= link_to "http://#{@subcontractor.link}", url_for("http://"+@subcontractor.link) %>
+  <%= link_to "#{@subcontractor.link}", url_for(@subcontractor.link) %>
 </p>
 
 <p>
