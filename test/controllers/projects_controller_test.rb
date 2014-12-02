@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
+  include SessionsHelper
+
   setup do
     @project = projects(:one)
+	@user = users(:one)
+  	log_in(@user)
   end
 
   test "should get index" do

@@ -1,10 +1,16 @@
 class ProjectsController < ApplicationController
+  include CurrentUser
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :index]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+	if @current_user.is_admin?
+		@projects = Project.all
+	else 
+		@projects = []
+	end
   end
 
   # GET /projects/1
@@ -26,6 +32,14 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
 	@project.created_at = DateTime.now
+
+	user_params = {
+		email: @project.email,
+		password: @project.password
+	}
+	get_create_current_user(user_params)
+
+	@project.user = @current_user
 
     respond_to do |format|
       if @project.save

@@ -17,7 +17,16 @@ class SubcontractorsController < ApplicationController
 	if params[:id]
 		render show
 	else 
-		@subcontractors = Subcontractor.all
+		# everybody coud only see his own data
+		if @current_user.is_admin?
+			@subcontractors = Subcontractor.all
+		else
+			if current_user.subcontractor
+				@subcontractors = [current_user.subcontractor]
+			else
+				@subcontractors = []
+			end
+		end
 	end
   end
 
@@ -107,10 +116,4 @@ class SubcontractorsController < ApplicationController
       params.require(:subcontractor).permit(:name, :email, :skills, :company_size, :created_at, :location, :link, :description, :password)
     end
 
-	def logged_in_user
-      unless logged_in?
-        flash[:danger] = "Please log in."
-        redirect_to url_for login_url
-      end
-    end
 end
