@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class SubcontractorsControllerTest < ActionController::TestCase
+  include SessionsHelper
+
   setup do
     @subcontractor = subcontractors(:one)
+	@user = users(:one)
+	log_in(@user)
   end
 
   test "should get index" do
