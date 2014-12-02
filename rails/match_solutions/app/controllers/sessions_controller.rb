@@ -14,4 +14,13 @@ class SessionsController < ApplicationController
       render 'new'    # Create an error message.
     end
   end
+
+  def logout
+  	session[:user_id] = nil
+	render 'new'
+  end
+
+  def destroy
+  	logout
+  end
 end

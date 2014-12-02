@@ -7,7 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<h1>Outsourcing Heaven & Hell</p>
+<h1>Outsourcing Heaven & Hell</h1>
+	<div class="container">
+		<div id="navbar" class="navbar-header">
+		<div class="navbar-collapse">
+			<% if @current_user %>
+				<%= link_to "logout", :controller => :sessions, :action => :destroy %>
+			<% end %>		
+		</div>
+		</div>
+	</div>
 	<div class="container">
 		<%= yield %>
 	</div>

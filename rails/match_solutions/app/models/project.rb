@@ -9,4 +9,7 @@ end
 class Project < ActiveRecord::Base
 	validates :name,:email, :description, :presence => true
 	validates :email, :email => true
+	belongs_to :user
+	
+	attr_accessor :password
 end
