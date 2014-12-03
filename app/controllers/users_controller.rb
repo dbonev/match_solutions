@@ -76,7 +76,7 @@ class UsersController < ApplicationController
 	  else 
 		  @user = @current_user
 	  end
-	  if @user != @current_user
+	  if @user != @current_user && @current_user != nil
 		  if !@current_user.is_admin?
 		  	@user = @current_user
 		  end
