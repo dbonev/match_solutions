@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'pages/contact'
 
-  get 'pages/faq'
+  get 'pages/faq', :as => :faq
 
   get 'sessions/new'
 

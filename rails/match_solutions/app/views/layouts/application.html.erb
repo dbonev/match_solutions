@@ -12,7 +12,7 @@
 		<div id="navbar" class="navbar-header">
 		<div class="navbar-collapse">
 			<%= link_to "home", pages_path %>
-			<%= link_to "faq", :controller => :pages, :action => :faq %>
+			<%= link_to "faq", faq_path %>
 			<% if @current_user %>
 				<% user_email = @current_user.email %>
 				Logged in as <%= link_to user_email, user_path %> <%= link_to "logout", :controller => :sessions, :action => :destroy %>
