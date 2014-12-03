@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'pages/contact'
 
+  get 'pages/faq'
+
   get 'sessions/new'
 
   get 'users/show', :as => :user
