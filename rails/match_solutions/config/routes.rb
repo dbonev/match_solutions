@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   resources :subcontractors
 
+  get 'projects/success' => 'projects#success', :as => :project_success
   resources :projects
-
 
   get    'login'   => 'sessions#new', :as => :login
   post   'login'   => 'sessions#create'

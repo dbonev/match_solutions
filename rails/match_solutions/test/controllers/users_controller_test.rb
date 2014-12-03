@@ -1,8 +1,10 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
+  include SessionsHelper
   setup do
     @user = users(:one)
+	log_in(@user)
   end
 
   test "should get index" do
