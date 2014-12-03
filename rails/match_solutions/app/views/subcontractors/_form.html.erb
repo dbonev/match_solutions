@@ -19,10 +19,12 @@
     <%= f.label :email %><br>
     <%= f.text_field :email, :placeholder => "Contact email", :class => "form-control"%>
   </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password, :placeholder => "you'll need this to edit your profile", :class => "form-control"%>
-  </div>
+  <% if !@is_edit %>
+	  <div class="field">
+		<%= f.label :password %><br>
+		<%= f.password_field :password, :placeholder => "you'll need this to edit your profile", :class => "form-control"%>
+	  </div>
+  <% end %>
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location, :placeholder => "e.g. Germany or London", :class => "form-control" %>
@@ -44,6 +46,6 @@
     <%= f.text_field :company_size, :placeholder => "e.g. 5 developers, 3 QA engineers", :class => "form-control" %>
   </div>
   <div class="actions">
-    <%= f.submit "Apply as a subcontractor", :class => "btn btn-lg btn-primary" %>
+    <%= f.submit @submit_title, :class => "btn btn-lg btn-primary" %>
   </div>
 <% end %>

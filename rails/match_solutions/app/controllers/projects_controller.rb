@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   include CurrentUser
+  before_action :current_user
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:edit, :update, :destroy, :index]
 
@@ -9,7 +10,7 @@ class ProjectsController < ApplicationController
 	if @current_user.is_admin?
 		@projects = Project.all
 	else 
-		@projects = []
+		@projects = @current_user.projects
 	end
   end
 
@@ -21,6 +22,9 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+	@project.email = @current_user != nil ? @current_user.email : ""
+	@project.name = @current_user != nil && @current_user.subcontractor != nil ? @current_user.subcontractor.name : ""
+	@project.location = @current_user != nil && @current_user.subcontractor != nil ? @current_user.subcontractor.location : ""
   end
 
   # GET /projects/1/edit
@@ -33,6 +37,13 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 	@project.created_at = DateTime.now
 
+	if @current_user == nil && (@project.password == nil || @project.password == "")
+		@project.errors.add :password
+		respond_to do |format|
+			format.html { render :new }
+		end
+		return
+	end
 	user_params = {
 		email: @project.email,
 		password: @project.password
@@ -85,6 +96,6 @@ class ProjectsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :email, :description, :location, :created_at)
+      params.require(:project).permit(:name, :email, :description, :location, :created_at, :password)
     end
 end
