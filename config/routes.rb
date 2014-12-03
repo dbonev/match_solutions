@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'pages/home'
+  get 'pages/home', :as => :pages
 
   get 'pages/about'
 
@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
+  get 'users/show', :as => :user
   resources :users
 
   resources :subcontractors
@@ -14,9 +15,9 @@ Rails.application.routes.draw do
   resources :projects
 
 
-  get    'login'   => 'sessions#new'
+  get    'login'   => 'sessions#new', :as => :login
   post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
+  delete 'logout'  => 'sessions#destroy', :as => :logout
   get 	 'logout'  => 'sessions#logout'
 
   # The priority is based upon order of creation: first created -> highest priority.
