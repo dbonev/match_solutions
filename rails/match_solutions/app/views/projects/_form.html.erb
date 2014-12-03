@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="input-group">
-    <%= f.label :name %><br>
+    <%= f.label "Your name (or the name of the company)" %><br>
     <%= f.text_field :name, :placeholder => "Your (company) name", :cols => 60, :class => "form-control" %>
   </div>
   <div class="field">
@@ -28,12 +28,21 @@
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location, :placeholder => "(optional)", :class => "form-control"%>
+	We assume remote is always allowed. If not, please state this explicitly.
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description, :cols => 60, :rows => 10, :class => "form-control", :placeholder => "e.g. We are building a multi-layer solution for a large insurance client. We need to outsource the mobile dev part. Deadline is in 4 months." %>
+    <%= f.text_area :description, :cols => 60, :rows => 6, :class => "form-control", :placeholder => "e.g. We are building a multi-layered solution for a large insurance client. We need to outsource the mobile dev part. Deadline is in 4 months." %>
+	Keep it short!<br/>Be as specific as possible, but feel free to keep any confidential details for the private chat with the team.
+	<br/>
+	Important things to include (where applicable):
+	<ul>
+		<li>Nature of the project (whether if it is IT administration outsourcing, e-comerce website, social mobile app)</li>	
+		<li>Technology requirements, if any (e.g. if needs to be done in Ruby on Rails)</li>	
+		<li>Deadlines</li>	
+	</ul>
   </div>
   <div class="actions ">
-    <%= f.submit :class => "btn btn-lg btn-primary"%>
+    <%= f.submit "Find a Team for This Project", :class => "btn btn-lg btn-primary"%>
   </div>
 <% end %>
