@@ -1,48 +1,48 @@
 <%= form_for(@subcontractor) do |f| %>
   <% if @subcontractor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@subcontractor.errors.count, "error") %> prohibited this subcontractor from being saved:</h2>
-
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <h4><%= pluralize(@subcontractor.errors.count, "error") %> prohibited this subcontractor from being saved:</h4>
       <ul>
-      <% @subcontractor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @subcontractor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
+  <div class="form-group">
+    <%= f.label :name, class: 'control-label' %><br>
     <%= f.text_field :name, :placeholder => "Name of the company", :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
+  <div class="form-group">
+    <%= f.label :email, class: 'control-label' %><br>
     <%= f.text_field :email, :placeholder => "Contact email", :class => "form-control"%>
   </div>
   <% if !@is_edit %>
-	  <div class="field">
-		<%= f.label :password %><br>
+	  <div class="form-group">
+		<%= f.label :password, class: 'control-label' %><br>
 		<%= f.password_field :password, :placeholder => "you'll need this to edit your profile", :class => "form-control"%>
 	  </div>
   <% end %>
-  <div class="field">
-    <%= f.label :location %><br>
+  <div class="form-group">
+    <%= f.label :location, class: 'control-label' %><br>
     <%= f.text_field :location, :placeholder => "e.g. Germany or London", :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
+  <div class="form-group">
+    <%= f.label :description, class: 'control-label' %><br>
     <%= f.text_area :description, :cols => 40, :rows => 8, :placeholder => "Your company in a few sentences. If applicable, please include links to two projects you're proud of.", :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :link %><br>
+  <div class="form-group">
+    <%= f.label :link, class: 'control-label' %><br>
     <%= f.text_field :link, :placeholder => "Your website", :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :skills %><br>
+  <div class="form-group">
+    <%= f.label :skills, class: 'control-label' %><br>
     <%= f.text_area :skills, :cols => 40, :rows => 8, :placeholder => "What are your company's core strenghts. e.g. mobile, web, enterprise, ruby", :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :company_size %><br>
+  <div class="form-group">
+    <%= f.label :company_size, class: 'control-label' %><br>
     <%= f.text_field :company_size, :placeholder => "e.g. 5 developers, 3 QA engineers", :class => "form-control" %>
   </div>
   <div class="actions">
