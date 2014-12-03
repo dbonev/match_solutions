@@ -14,7 +14,15 @@
   <strong>Description:</strong>
   <%= @subcontractor.description %>
 </p>
+<p>
+  <strong>Skills</strong>
+  <%= @subcontractor.skills %>
+</p>
 
+<p>
+  <strong>Capacity</strong>
+  <%= @subcontractor.company_size %>
+</p>
 <p>
   <strong>Location:</strong>
   <%= @subcontractor.location %>
@@ -22,4 +30,4 @@
 
 
 <%= link_to 'Edit', edit_subcontractor_path(@subcontractor) %> |
-<%= link_to 'Back', subcontractors_path %>
+<%= link_to 'Back', user_path(@user) %>

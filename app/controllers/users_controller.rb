@@ -1,16 +1,22 @@
 class UsersController < ApplicationController
   before_action :current_user
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :index]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+	if @current_user.is_admin?
+		@users = User.all
+	else
+		@users = [ @current_user ]
+	end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+  	@proj_count = @user.projects.count
   end
 
   # GET /users/new

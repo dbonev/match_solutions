@@ -16,9 +16,11 @@
 Company: <%= link_to @user.subcontractor.name, @user.subcontractor %>
 <% end %>
 <div class="container">
-<% @user.projects.each do |p| %>
- <%= link_to p.name, p %>
+
+<% if @proj_count > 0 %>
+	<h2>You have <%= @proj_count %> <%= @proj_count > 1 ? "projects" : "project" %> listed </h2>
+	<% @user.projects.each do |p| %>
+	 <%= link_to  p.name, p, { :class => "btn btn-lg btn-primary" } %>
+	<% end %>
 <% end %>
 </div>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

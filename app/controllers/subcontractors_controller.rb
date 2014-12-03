@@ -37,6 +37,8 @@ class SubcontractorsController < ApplicationController
 
   # GET /subcontractors/new
   def new
+	@is_edit = false
+  	@submit_title = "Apply"
 	if !logged_in?
 		@subcontractor = Subcontractor.new
 	else 
@@ -44,7 +46,8 @@ class SubcontractorsController < ApplicationController
 		if @subcontractor == nil
 			@subcontractor = Subcontractor.new
 		elsif
-			render edit
+			@subcontractor = current_user.subcontractor
+			render :edit
 			return
 		end
 	end
@@ -52,6 +55,8 @@ class SubcontractorsController < ApplicationController
 
   # GET /subcontractors/1/edit
   def edit
+	@is_edit = true
+  	@submit_title = "Submit"
   end
 
   # POST /subcontractors
@@ -108,7 +113,9 @@ class SubcontractorsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_subcontractor
-      @subcontractor = Subcontractor.find(params[:id])
+	  if @subcontractor == nil
+		  @subcontractor = Subcontractor.find(params[:id])
+	  end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
