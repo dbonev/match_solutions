@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   include CurrentUser
   before_action :current_user
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :success]
   before_action :logged_in_user, only: [:edit, :update, :destroy, :index]
 
   # GET /projects
@@ -31,8 +31,7 @@ class ProjectsController < ApplicationController
   def edit
   end
 
-  def success(id)
-  	@project = Project.find(id)
+  def success
   end
 
   # POST /projects
@@ -59,7 +58,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
 		ProjectMailer.welcome_email(@project).deliver
-        format.html { redirect_to success(@project.id), notice: 'Project was successfully created.' }
+        format.html { redirect_to :controller => :projects, :action => :success, id: @project.id, notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
@@ -73,7 +72,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to success(@project), notice: 'Project was successfully updated.' }
+        format.html { redirect_to success_path, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
