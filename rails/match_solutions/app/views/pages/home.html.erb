@@ -10,6 +10,6 @@ How it works
 </ul>
 <p>It's free for limited time (while we're in beta)</p>
 <div>
-<%= link_to "Find a Subcontractor", :controller => :projects, :action => :new, :class => "btn btn-lg btn-primary", :method => :get%>
-<%= link_to "Apply for a subcontractor", :controller => :subcontractors, :action => :new, :class => "btn btn-lg btn-primary", :method => :get%>
+<%= link_to "Find a Subcontractor", {:controller => :projects, :action => :new}, {:class => "btn btn-lg btn-primary"} %>
+<%= link_to "Apply for a subcontractor", {:controller => :subcontractors, :action => :new}, {:class => "btn btn-lg btn-primary"} %>
 </div>

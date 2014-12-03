@@ -11,8 +11,12 @@
 	<div class="container">
 		<div id="navbar" class="navbar-header">
 		<div class="navbar-collapse">
+			<%= link_to "home", pages_path %>
 			<% if @current_user %>
-				<%= link_to "logout", :controller => :sessions, :action => :destroy %>
+				<% user_email = @current_user.email %>
+				Logged in as <%= link_to user_email, user_path %> <%= link_to "logout", :controller => :sessions, :action => :destroy %>
+			<% else %>
+				<%= link_to "login", login_path(:rurl => request.original_url) %>
 			<% end %>		
 		</div>
 		</div>

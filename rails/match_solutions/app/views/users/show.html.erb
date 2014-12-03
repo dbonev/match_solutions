@@ -1,19 +1,24 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Profile Details</h1>
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
 
 <p>
-  <strong>Created at:</strong>
-  <%= @user.created_at %>
+  <strong>Member since</strong>
+  <%= @user.created_at.strftime("%m-%d-%Y") %>
 </p>
 
+<% if @user.subcontractor != nil %>
+Company: <%= link_to @user.subcontractor.name, @user.subcontractor %>
+<% end %>
+<div class="container">
+<% @user.projects.each do |p| %>
+ <%= link_to p.name, p %>
+<% end %>
+</div>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
