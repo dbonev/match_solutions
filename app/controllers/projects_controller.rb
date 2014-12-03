@@ -31,6 +31,10 @@ class ProjectsController < ApplicationController
   def edit
   end
 
+  def success(id)
+  	@project = Project.find(id)
+  end
+
   # POST /projects
   # POST /projects.json
   def create
@@ -55,7 +59,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
 		ProjectMailer.welcome_email(@project).deliver
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to success(@project.id), notice: 'Project was successfully created.' }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }

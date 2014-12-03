@@ -38,7 +38,7 @@ class SubcontractorsController < ApplicationController
   # GET /subcontractors/new
   def new
 	@is_edit = false
-  	@submit_title = "Apply as a subcontractor"
+  	@submit_title = "Apply"
 	if !logged_in?
 		@subcontractor = Subcontractor.new
 	else 
