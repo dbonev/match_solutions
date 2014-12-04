@@ -56,6 +56,7 @@ class SubcontractorsControllerTest < ActionController::TestCase
 
   test "should destroy subcontractor" do
     assert_difference('Subcontractor.count', -1) do
+	  @user.subcontractor = @subcontractor
       delete :destroy, id: @subcontractor
     end
 
