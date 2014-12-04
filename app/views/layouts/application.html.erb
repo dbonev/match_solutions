@@ -12,8 +12,8 @@
     <header id="header" class="header">  
         <div class="container">            
             <h1 class="logo pull-left">
-                <a class="scrollto" href="#home">
-                    <span class="logo-title">#IT #Project #Outsource</span>
+                <a href="/pages/home">
+                    <span class="logo-title">Project: Outsource</span>
                 </a>
             </h1><!--//logo-->              
             <nav id="main-nav" class="main-nav navbar-right" role="navigation">
@@ -27,10 +27,17 @@
                 </div><!--//navbar-header-->            
                 <div class="navbar-collapse collapse" id="navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active nav-item sr-only"><a class="scrollto" href="#promo">Home</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#about">How it works</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#faq">FAQ</a></li>
-                        <li class="nav-item"><a class="scrollto" href="#about">Login</a></li>
+						<% if params[:controller] == :pages && params[:action] == :home %>
+							<li class="nav-item"><a class="scrollto" href="#about">How it works</a></li>
+						<% else %>
+							<li class="nav-item"><a href="/pages/home#about">How it works</a></li>
+						<% end %>
+						<% if @current_user %>
+							<li class="nav-item"><%= link_to "Logged in as: " + @current_user.email, user_path %></a></li>
+							<li class="nav-item"><%= link_to "Logout", logout_path %></a></li>
+						<% else %>
+							<li class="nav-item"><%= link_to "Login", login_path %> </li>
+						<% end %>
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
             </nav><!--//main-nav-->

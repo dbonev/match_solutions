@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'pages/home', :as => :pages
 
+  get '/not_found', :to => redirect('/404.html'), :as => :not_found
+
   get 'pages/about'
 
   get 'pages/contact'

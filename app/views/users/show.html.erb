@@ -1,26 +1,48 @@
-<p id="notice"><%= notice %></p>
+<section class="license section">
+    <div class="container">
+        <div class="license-inner">
+            <h2 class="title text-center">Profile Details</h2>
+            <div class="info">
+                <div class="row">
+				  	<div class="col-md-6 col-md-offset-3">
+							<% if notice %>
+								<div class="alert alert-dismissable alert-info">
+								  <button type="button" class="close" data-dismiss="alert">×</button>
+									<%= notice %>
+								</div>
+							<% end %>
+							<p>
+							  <strong>Email:</strong>
+							  <%= @user.email %>
+							</p>
+							<p>
+							  <strong>Member since</strong>
+							  <%= @user.created_at.strftime("%m-%d-%Y") %>
+							</p>
 
-<h1>Profile Details</h1>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+							<p>
+								<% if @user.subcontractor != nil %>
+									<strong>Company:</strong> <%= link_to @user.subcontractor.name, @user.subcontractor %>
+								<% end %>
+							</p>
 
+							<% if @proj_count > 0 %>
+								<% all_projects_heading = "#{pluralize(@proj_count,'project')}" %>
+								You have submitted <%= link_to all_projects_heading, projects_path %> so far
+								<ul>
+								<% @user.projects.each do |p| %>
+								 <li>
+									 <%= link_to  p.description[0..30] + "...", p %> 
+								 </li>
+								<% end %>
+								</ul>
+							<% end %>
+							<%= link_to "Submit a new project", :controller => :projects, :action => :new %>
 
-<p>
-  <strong>Member since</strong>
-  <%= @user.created_at.strftime("%m-%d-%Y") %>
-</p>
+					</div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</section>
 
-<% if @user.subcontractor != nil %>
-Company: <%= link_to @user.subcontractor.name, @user.subcontractor %>
-<% end %>
-<div class="container">
-
-<% if @proj_count > 0 %>
-	<h2>You have <%= @proj_count %> <%= @proj_count > 1 ? "projects" : "project" %> listed </h2>
-	<% @user.projects.each do |p| %>
-	 <%= link_to  p.name, p, { :class => "btn btn-lg btn-primary" } %>
-	<% end %>
-<% end %>
-</div>

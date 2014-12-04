@@ -11,28 +11,30 @@
     </div>
   <% end %>
 
-  <div class="input-group">
-    <%= f.label "Your name (or the name of the company)" %><br>
+  <div class="form-group">
+    <%= f.label "Your name (or the name of the company)" %>
     <%= f.text_field :name, :placeholder => "Your (company) name", :cols => 60, :class => "form-control" %>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
+  <div class="form-group">
+    <%= f.label :email %>
     <%= f.text_field :email,  :placeholder => "Contact email", :class => "form-control" %>
   </div>
   <% if !logged_in? %>
-	  <div class="field">
-		<%= f.label :password %><br>
+	  <div class="form-group">
+		<%= f.label :password %>
 		<%= f.password_field :password, :placeholder => "you'll need this to edit your project", :class => "form-control"%>
 	  </div>
   <% end %>
-  <div class="field">
-    <%= f.label :location %><br>
+  <div class="form-group">
+    <%= f.label :location %>
     <%= f.text_field :location, :placeholder => "(optional)", :class => "form-control"%>
-	We assume remote is always allowed. If not, please state this explicitly.
+	<i>Even if you specify location, we assume remote is always allowed. If not, please state this explicitly.</i>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
+  <div class="form-group">
+    <%= f.label "What needs to be done?" %>
     <%= f.text_area :description, :cols => 60, :rows => 6, :class => "form-control", :placeholder => "e.g. We are building a multi-layered solution for a large insurance client. We need to outsource the mobile dev part. Deadline is in 4 months." %>
+  </div>
+	<i>
 	Keep it short!<br/>Be as specific as possible, but feel free to keep any confidential details for the private chat with the team.
 	<br/>
 	Important things to include (where applicable):
@@ -41,7 +43,7 @@
 		<li>Technology requirements, if any (e.g. if needs to be done in Ruby on Rails)</li>	
 		<li>Deadlines</li>	
 	</ul>
-  </div>
+	</i>
   <div class="actions ">
     <%= f.submit "Find a Team for This Project", :class => "btn btn-lg btn-primary"%>
   </div>
