@@ -46,8 +46,9 @@ class SubcontractorsController < ApplicationController
 		if @subcontractor == nil
 			@subcontractor = Subcontractor.new
 		elsif
-			@subcontractor = current_user.subcontractor
-			render :edit
+			respond_to do |format|
+				format.html { redirect_to :controller => :subcontractors, :action => :edit, id: @subcontractor.id}
+			end
 			return
 		end
 	end
@@ -115,6 +116,9 @@ class SubcontractorsController < ApplicationController
     def set_subcontractor
 	  if @subcontractor == nil
 		  @subcontractor = Subcontractor.find(params[:id])
+		  if !@current_user.is_admin? && @current_user.subcontractor != @subcontractor
+				redirect_to not_found_path
+		  end
 	  end
     end
 

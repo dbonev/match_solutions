@@ -1,6 +1,21 @@
-<h1>Tell us about your project</h1>
-<p>We need some essential information in order to pick the best subcontractor for you. </p>
-<p>The information you submit is only viewable by our team and not shared with potential subcontractors.</p>
-<%= render 'form' %>
+<section id="faq" class="license section">
+    <div class="container">
+        <div class="license-inner">
+            <h2 class="title text-center">Tell us about your project</h2>
+			<div class="alert alert-info" role="alert">
+				<p>We need some essential information in order to pick the best subcontractor for you. </p>
+				<p>The information you submit is <strong>only viewable by our team</strong> and not shared with potential teams.</p>
+			</div>
 
-<%= link_to 'Back', pages_path %>
+            <div class="info">
+                <div class="row">
+                	<div class="col-md-12 col-md-offset-0">
+                		<%= render 'form' %>
+            		</div>
+            	</div>
+    		</div>
+    		<%= link_to 'Back', pages_path %>
+        </div>
+    </div>
+</section>
+

@@ -1,25 +1,40 @@
-<h1>Listing subcontractors</h1>
+<section class="license section">
+    <div class="container">
+        <div class="license-inner">
+            <h2 class="title text-center">Your Companies</h2>
+            <div class="info">
+                <div class="row">
+				  	<div class="col-md-6 col-md-offset-3">
 
-<table>
-  <thead>
-    <tr>
-	  <th>Subcontractor</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+							<table>
+							  <thead>
+								<tr>
+								  <th>Subcontractor</th>
+								  <th colspan="3"></th>
+								</tr>
+							  </thead>
 
-  <tbody>
-    <% @subcontractors.each do |subcontractor| %>
-      <tr>
-	  	<td><%= subcontractor.name %><br/><%= subcontractor.location %></td>
-        <td><%= link_to 'Show', subcontractor %></td>
-        <td><%= link_to 'Edit', edit_subcontractor_path(subcontractor) %></td>
-        <td><%= link_to 'Destroy', subcontractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+							  <tbody>
+								<% @subcontractors.each do |subcontractor| %>
+								  <tr>
+									<td><%= subcontractor.name %><br/><%= subcontractor.location %></td>
+									<td><%= link_to 'Show', subcontractor %></td>
+									<td><%= link_to 'Edit', edit_subcontractor_path(subcontractor) %></td>
+									<td><%= link_to 'Destroy', subcontractor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+								  </tr>
+								<% end %>
+							  </tbody>
+							</table>
 
-<br>
+							<br>
 
-<%= link_to 'New Subcontractor', new_subcontractor_path %>
+							<%= link_to 'New Subcontractor', new_subcontractor_path %>
+						</div>
+
+					</div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+</section>
+

@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   include CurrentUser
   before_action :current_user
   before_action :set_project, only: [:show, :edit, :update, :destroy, :success]
-  before_action :logged_in_user, only: [:edit, :update, :destroy, :index]
+  before_action :logged_in_user, only: [:edit, :update, :destroy, :index, :show]
 
   # GET /projects
   # GET /projects.json
@@ -40,12 +40,21 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 	@project.created_at = DateTime.now
 
-	if @current_user == nil && (@project.password == nil || @project.password == "")
-		@project.errors.add :password
-		respond_to do |format|
-			format.html { render :new }
+	if @current_user == nil 
+		if @project.password == nil || @project.password.empty? 
+			@project.errors.add :password
 		end
-		return
+		if @project.email == nil || @project.email.empty?
+			@project.errors.add :email
+		end
+		if @project.errors.any?
+			respond_to do |format|
+				format.html { render :new }
+			end
+			return
+		end
+	elsif @current_user != nil
+		@project.password = "a"
 	end
 	user_params = {
 		email: @project.email,
@@ -72,7 +81,7 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to success_path, notice: 'Project was successfully updated.' }
+        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
         format.html { render :edit }
@@ -95,6 +104,10 @@ class ProjectsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
+	  if !@current_user.is_admin? && @project.user != @current_user
+		  redirect_to not_found_path
+	  end
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

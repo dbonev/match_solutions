@@ -12,4 +12,10 @@ class Project < ActiveRecord::Base
 	belongs_to :user
 	
 	attr_accessor :password
+
+	before_validation(on: :create) do
+		if password == nil || password.empty? 
+			errors.add(:password)
+		end
+	end
 end
