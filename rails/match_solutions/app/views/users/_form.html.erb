@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %><br>
     <%= f.text_field :password %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :created_at %><br>
     <%= f.datetime_select :created_at %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Apply", :class => "btn btn-lg btn-primary" %>
   </div>
 <% end %>
