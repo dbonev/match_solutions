@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= f.label :name, class: 'control-label' %>
-    <%= f.text_field :name, :placeholder => "Name of the company", :class => "form-control" %>
+    <%= f.text_field :name, :placeholder => "Your name (or the name of the company)", :class => "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :email, class: 'control-label' %>
@@ -31,8 +31,14 @@
   </div>
   <div class="form-group">
     <%= f.label :description, class: 'control-label' %>
-    <%= f.text_area :description, :cols => 40, :rows => 8, :placeholder => "Your company in a few sentences. If applicable, please include links to two projects you're proud of.", :class => "form-control" %>
+    <%= f.text_area :description, :cols => 40, :rows => 8, :placeholder => "Tell us about you in a few sentences. If applicable, please include links to at least two projects you're proud of.", :class => "form-control" %>
   </div>
+  <i>
+  This information is for our review team and not your public profile, so please focus on objective facts we could verify (we most value past projects and accomplishments).<br/>
+  Don't put here an essay or the CVs of every person in your team. Keep it short.
+  <br/>
+  <br/>
+  </i>
   <div class="form-group">
     <%= f.label :link, class: 'control-label' %>
     <%= f.text_field :link, :placeholder => "Your website", :class => "form-control" %>
@@ -41,9 +47,15 @@
     <%= f.label :skills, class: 'control-label' %>
     <%= f.text_area :skills, :cols => 40, :rows => 8, :placeholder => "What are your company's core strenghts. e.g. mobile, web, enterprise, ruby", :class => "form-control" %>
   </div>
+  <i>
+  Please do not list every possible technology or skillset you can think of. Again, keep it short and focus on verifiable facts.<br/>
+  For instance, if you say you are good at mobile, show us some cool apps in the AppStore / Google Play.
+  </i>
+  <br/>
+  <br/>
   <div class="form-group">
     <%= f.label :company_size, class: 'control-label' %>
-    <%= f.text_field :company_size, :placeholder => "e.g. 5 developers, 3 QA engineers", :class => "form-control" %>
+    <%= f.text_field :company_size, :placeholder => "e.g. 5 developers, 1 QA engineer", :class => "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit @submit_title, :class => "btn btn-lg btn-primary" %>
