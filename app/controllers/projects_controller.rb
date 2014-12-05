@@ -62,6 +62,14 @@ class ProjectsController < ApplicationController
 	}
 	get_create_current_user(user_params)
 
+	if @current_user == nil
+		@project.errors.add :email
+		respond_to do |format|
+			format.html { render :new }	
+		end
+		return
+	end
+
 	@project.user = @current_user
 
     respond_to do |format|

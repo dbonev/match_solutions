@@ -73,6 +73,14 @@ class SubcontractorsController < ApplicationController
 	}
 	get_create_current_user(user_params)
 
+	if @current_user == nil
+		@subcontractor.errors.add :email
+		respond_to do |format|
+			format.html { render :new }	
+		end
+		return
+	end
+
 	@subcontractor.user = @current_user
 
     respond_to do |format|
