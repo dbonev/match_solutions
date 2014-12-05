@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 	  if return_url 
 		  redirect_to return_url #"/subcontractors/", :id => @subcontractor.id
 	  else 
-		  redirect_to user_path(:id => user.id)
+		  redirect_to user_show_path(:id => user.id)
 	  end
     else
 	  flash[:danger] = 'Invalid email/password combination' # Not quite right!

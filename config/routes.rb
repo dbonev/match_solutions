@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  get 'users/show', :as => :user
+  get 'users/show', :as => :user_show
   resources :users
 
   resources :subcontractors
