@@ -1,0 +1,77 @@
+<!-- ******PROMO****** -->
+    <section id="promo" class="promo section offset-header">
+        <div class="container text-center">
+            <h2 class="title" id="title" name="title">Need<br/><span id="title_part">Contractors?</span></h2>
+            <p class="intro">Great IT teams and professionals on demand.</p>
+            <p class="intro">No bidding. No waiting. No hassle.</p>
+			<br />
+            <p class="intro">#development #administration #design</p>
+            <div class="btns">
+				<%= link_to "Start Talking to an Expert in 5 Minutes", {:controller => :projects, :action => :new}, {:class => "btn btn-cta-secondary"} %>
+            </div>
+			<br />
+            <br />
+            <br />
+			<br/>
+			Are you a great developer, admin or designer or part of an amazing team?<br/><%= link_to "Apply here to get projects", {:controller => :subcontractors, :action => :new}, {:class => "lnk"} %>
+            
+            <ul class="meta list-inline">
+                
+            </ul><!--//meta-->
+        </div><!--//container-->          
+    </section><!--//promo-->    
+
+    <!-- ******LICENSE****** --> 
+    <section id="about" class="license section">
+        <div class="container">
+            <div class="license-inner">
+            <h2 class="title text-center">How it works</h2>
+                <div class="info">
+					<h4>You need a team or contractor to get a job done?</h4>
+					<ul>
+						<li>Tell us what needs to be done</li>
+						<li>We hand-pick up to three pre-vetted teams or professionals that can do what you want and notify you by email</li>
+						<li>Discuss the details directly with the team you've chosen</li>
+					</ul>
+                </div><!--//info-->
+                <div class="info">
+					<h4>What is it ideal for?</h4>
+					<ul>
+						<li>Technical realisation or evaluation of an idea (now you can start building that great project)</li>
+						<li>Outsourcing projects or parts of projects</li>
+						<li>Outsourcing IT services like administration and support</li>
+						<li>Finding subcontractors</li>
+					</ul>
+					<p>You can <strong>start talking</strong> to a real professional or a team <strong>in minutes</strong>. No time-consuming registrations or setup. You simply discuss privately with real experts, using the tools you prefer (email, Skype, IM).</p>
+                </div><!--//info-->
+                <div class="info">
+					<h4>How much does it cost?</h4>
+					<p>We are free for the time of the beta. Hurry up!</p>
+				</div>
+                <div class="cta-container">
+                    <div class="speech-bubble">                    
+                        <p class="intro text-center">Find a team now. It is free for the time of the beta.</p>
+                    </div><!--//speech-bubble-->
+                    <div class="btn-container  text-center">
+                        
+						<%= link_to "Start talking to a team now", {:controller => :projects, :action => :new}, {:class => "btn btn-cta-secondary"} %>
+                    </div><!--//btn-container-->
+                </div><!--//cta-container-->
+
+            </div><!--//license-inner-->
+        </div><!--//container-->
+    </section><!--//how-->
+<script>
+	var titles = ["Developers", "Designers", "IT Experts", "Subcontractors", "Contractors"];
+	var i = 0;
+	setTimeout(function() { developer(titles[i++]) }, 3000)
+	function developer(what){
+		$("#title_part").fadeOut('quick', function() { $("#title_part").html(what + "?");});
+		$("#title_part").fadeIn('slow')
+		var title = titles[i++];
+		if (i >= titles.length){
+			i = 0;
+		}
+		setTimeout(function() { developer(title); }, 3000);
+	}
+</script>
