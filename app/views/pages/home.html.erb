@@ -76,7 +76,7 @@
 		for(ii = current_title.length; ii > 0; ii--){
 			//current_title = titles[i].substring(0, ii);
 			var iii = titles[i].length - ii;
-			setTimeout(function(ii) { $("#title_part").html(titles[i].substring(0, ii) + "|?"); /*alert(titles[i].substring(0, ii) + " " + ii); */}, iii * 20, ii);
+			setTimeout(function(ii) { $("#title_part").html(titles[i].substring(0, ii) + "|?"); /*alert(titles[i].substring(0, ii) + " " + ii); */}, iii * 1, ii);
 		}
 		increment();
 
@@ -85,7 +85,7 @@
 		for(ii = 1; ii <= title.length; ii++){
 			var iii = ii;
 			//alert(current_title.length);
-			setTimeout(function(ii) { $("#title_part").html(titles[i].substring(0, ii) + "|?"); /*alert(titles[i].substring(0, ii) + " " + ii); */ }, iii * 20 + 1000, ii);
+			setTimeout(function(ii) { $("#title_part").html(titles[i].substring(0, ii) + "|?"); /*alert(titles[i].substring(0, ii) + " " + ii); */ }, iii * 40 + 800, ii);
 		}
 
 //		var title = titles[i++];
@@ -93,7 +93,7 @@
 //		$("#title_part").fadeIn('slow')
 		
 		ts = Date.now();
-		setTimeout(function() { developer(title); }, 3000);
+		setTimeout(function() { developer(title); }, 4000);
 	}
 	function increment(){
 		i++
