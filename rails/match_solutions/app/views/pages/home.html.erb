@@ -29,8 +29,8 @@
                 <div class="info">
 					<h4>You need a team or contractor to get a job done?</h4>
 					<ul>
-						<li>Tell us what needs to be done</li>
-						<li>We hand-pick up to three pre-vetted teams or professionals that can do what you want and notify you by email</li>
+						<li><%= link_to "Tell us", { :controller => :projects, :action => :new} %> what needs to be done (e.g. "a social iPhone app", "a web-based document management system")</li>
+						<li>We hand-pick up to three pre-vetted teams or professionals who can do what you need and notify you by email</li>
 						<li>Discuss the details directly with the team you've chosen</li>
 					</ul>
                 </div><!--//info-->
@@ -62,7 +62,7 @@
         </div><!--//container-->
     </section><!--//how-->
 <script>
-	var titles = ["Developers", "Designers", "IT Experts", "Subcontractors", "Contractors"];
+	var titles = ["Developers", "Designers",  "Contractors", "IT Experts", "Subcontractors"];
 	var i = 0;
 	setTimeout(function() { developer(titles[i++]) }, 3000)
 	function developer(what){
