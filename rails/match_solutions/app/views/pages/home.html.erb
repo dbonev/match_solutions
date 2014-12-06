@@ -1,7 +1,7 @@
 <!-- ******PROMO****** -->
     <section id="promo" class="promo section offset-header">
         <div class="container text-center">
-            <h2 class="title">Need a<br/>Contractor?</h2>
+            <h2 class="title" id="title" name="title">Need<br/><span id="title_part">Contractors?</span></h2>
             <p class="intro">Great IT teams and professionals on demand.</p>
             <p class="intro">No bidding. No waiting. No hassle.</p>
 			<br />
@@ -61,4 +61,17 @@
             </div><!--//license-inner-->
         </div><!--//container-->
     </section><!--//how-->
-
+<script>
+	var titles = ["Developers", "Designers", "IT Experts", "Subcontractors", "Contractors"];
+	var i = 0;
+	setTimeout(function() { developer(titles[i++]) }, 3000)
+	function developer(what){
+		$("#title_part").fadeOut('quick', function() { $("#title_part").html(what + "?");});
+		$("#title_part").fadeIn('slow')
+		var title = titles[i++];
+		if (i >= titles.length){
+			i = 0;
+		}
+		setTimeout(function() { developer(title); }, 3000);
+	}
+</script>
