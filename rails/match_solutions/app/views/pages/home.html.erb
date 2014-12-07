@@ -5,7 +5,7 @@
             <p class="intro">Great IT teams and professionals on demand.</p>
             <p class="intro">No bidding. No waiting. No hassle.</p>
 			<br />
-            <p class="intro">#development #administration #design</p>
+            <p class="intro">#iOS #web #android #design #enterprise</p>
             <div class="btns">
 				<%= link_to "Find a Contractor Now", {:controller => :projects, :action => :new}, {:class => "btn btn-cta-secondary"} %>
             </div>
@@ -30,8 +30,9 @@
 					<h4>You need a team or contractor to get a job done?</h4>
 					<ul>
 						<li><%= link_to "Tell us", { :controller => :projects, :action => :new} %> what needs to be done (e.g. "a social iPhone app", "a web-based document management system")</li>
-						<li>We hand-pick up to three pre-vetted teams or professionals who can do what you need and notify you by email</li>
-						<li>Discuss the details directly with the team you've chosen</li>
+						<li>We hand-pick up to three pre-vetted teams or professionals who can do what you need and send you an email with information about them</li>
+						<li>Chose who you want to talk to and we introduce you</li>
+						<li>Start talking directly with the experts</li>
 					</ul>
                 </div><!--//info-->
                 <div class="info">
@@ -62,14 +63,14 @@
         </div><!--//container-->
     </section><!--//how-->
 <script>
-	var titles = ["Developers?", "Designers? ", "Subcontractors?", "IT Experts?", "Contractors? "];
+	var titles = ["Designers? ", "Subcontractors?", "Developers?", "IT Experts?", "Contractors? ", "Administrators?", "Consultants? "];
 	var i = 0;
-	setTimeout(function() { developer(titles[i++]) }, 3000)
+	setTimeout(function() { developer(titles[i++]) }, 4000)
 	var ts = Date.now();
 	
 	function developer(what){
 		var now = Date.now();
-		if (now - ts < 2900){
+		if (now - ts < 3900){
 			return;
 		}
 		var current_title = titles[i];
