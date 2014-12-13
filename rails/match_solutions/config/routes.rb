@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'qlibri/index'
+
+  get 'qlibri/portfolio'
+
+  get 'qlibri/contacts'
+
   get 'pages/home', :as => :pages
 
   get '/not_found', :to => redirect('/404.html'), :as => :not_found
