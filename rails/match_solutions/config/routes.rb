@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   get 'qlibri/index'
+  get 'qlibri/' => 'qlibri#index'
 
   get 'qlibri/portfolio'
 
   get 'qlibri/contacts'
+  post 'qlibri/contacts' => 'qlibri#contacts'
 
   get 'pages/home', :as => :pages
 

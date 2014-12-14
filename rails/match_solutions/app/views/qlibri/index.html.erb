@@ -2,11 +2,11 @@
 <section id="promo" class="promo section offset-header">
 	<div class="container text-center">
 		<h2 class="title" id="title" name="title">We create products people love</h2>
-		<p class="intro">A passionalte development studio</p>
+		<p class="intro">A young development studio</p>
 		<p class="intro">creating amazing software products for </p>
 		<p class="intro">#iOS #Android #Web #Desktop</p>
 		<div class="btns">
-			<%= link_to "Get a Free Quote For Your Project Now", {:controller => :projects, :action => :new}, {:class => "btn btn-cta-secondary"} %>
+			<a href="#contact_form" class= "btn btn-cta-secondary">Get a Free Quote For Your Project Now</a>
 		</div>
 		<br />
 		<br />
@@ -20,34 +20,39 @@
 </section><!--//promo-->    
 
 <!-- ******LICENSE****** --> 
-<section id="about" class="license section">
+<section class="about section">
 	<div class="container">
-		<div class="license-inner">
-		<h2 class="title text-center">Who we are</h2>
+		<div class="item col-md-4 col-sm-6 col-xs-12">
+		<h2 id="about" class="title text-center">Who are we?</h2>
 			<div class="info">
-				<h4>We love what we do</h4>
+				<p>We are a small team of experienced software developers, based in Sofia, Bulgaria.</p> 
+				<h4>We love what we do...</h4>
 				<p>We simply love software development. We have been doing this since we were kids. Serioulsy, we can't imagine we would do something else.</p>
-				<p>Even more, we absolutely <strong>love</strong> building great products, in which we put all our passion and experience.</p>
-				<p>This is why we started Qlibri.</p>
+				<h4>...so we do what we love</h4>
+				<p>This is why we started Qlibri.<br/>
+				At Qlibri, development is not simply a job. It's a passion and a way of living.
+				</p>
 			</div><!--//info-->
 
 		</div>
-		<div class="license-inner">
-		<h2 class="title text-center">What we have done?</h2>
+		<div class="item col-md-4 col-sm-6 col-xs-12">
+		<h2 id="portfolio" class="title text-center">What we have done?</h2>
 			<div class="info">
 				<h4>Some recent projects we are proud of</h4>
-				<p>You have a project or just a great idea? Now you can start building it. If it's software, we can make it.</p>
+				<p>We are absolutely passionate about all of our projects. Here are some of the amazing products the developers of our team have done:</p>
 				<ul>
-					<li>Website</li>
-					<li>Mobile App</li>
-					<li>Specialized software for your company</li>
+					<li><a href="http://giveapizza.com" target="_blank">Give a Pizza</a></li>
+					<li><a href="http://getqlibri.com" target="_blank">Qlibri</a></li>
+					<li><a href="http://mytriply.com">Triply</a></li>
+					<li><a href="http://meerkapp.com">Meerkapp</a></li>
+					<li><a href="http://shtipkasol.com">Pinch of Salt</a></li>
 				</ul>
 				<p>Our team has long experience in building various software solutions ranging from mission-critical large-scale systems for financial and insurance companies, to fun mobile apps.</p>
 			</div><!--//info-->
 
 		</div>
-		<div class="license-inner">
-		<h2 class="title text-center">What we can do for you?</h2>
+		<div class="item col-md-4 col-sm-6 col-xs-12">
+		<h2 class="title text-center">What can we do?</h2>
 			<div class="info">
 				<h4>Bring your ideas to life</h4>
 				<p>You have a project or just a great idea? Now you can start building it. If it's software, we can make it.</p>
@@ -59,16 +64,26 @@
 				<p>Our team has long experience in building various software solutions ranging from mission-critical large-scale systems for financial and insurance companies, to fun mobile apps.</p>
 			</div><!--//info-->
 			<!--//info-->
-			<div class="cta-container">
+			<!--//cta-container-->
+
+		</div><!--//license-inner-->
+
+	</div><!--//container-->
+
+</section><!--//how-->
+<section class="license section">
+	<div class="container">
+		<div class="license-inner">
+			<div class="cta-container" id="contact_form">
+				<h2>Contact us!</h2>
 				<div class="speech-bubble">                    
 					<p class="intro text-center">Talk to us now. We'd love to work with you!</p>
 				</div><!--//speech-bubble-->
-				<div class="btn-container  text-center">
+				<div class="btn-container">
 					
-					<%= link_to "Contact us.", {:controller => :projects, :action => :new}, {:class => "btn btn-cta-secondary"} %>
+					<%= render 'contact_form' %>
 				</div><!--//btn-container-->
 			</div><!--//cta-container-->
-
-		</div><!--//license-inner-->
-	</div><!--//container-->
-</section><!--//how-->
+		</div>
+	</div>
+</section>
