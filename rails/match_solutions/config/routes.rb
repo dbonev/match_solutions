@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'qlibri/portfolio'
 
   get 'qlibri/contacts'
-  post 'qlibri/contacts' => 'qlibri#contacts'
+  post 'qlibri/contacts' => 'qlibri#contacts', :as => :qlibri_contact
 
   get 'pages/home', :as => :pages
 

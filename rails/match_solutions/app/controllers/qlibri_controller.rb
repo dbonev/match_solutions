@@ -10,11 +10,10 @@ class QlibriController < ApplicationController
   	@qlibri_contact = QlibriContact.new(contact_params)
 	respond_to do |format|
       if @qlibri_contact.save
-        format.html { redirect_to :controller => :projects, :action => :success, id: @project.id, notice: 'Project was successfully created.' }
-        format.json { render :show, status: :created, location: @project }
+		ProjectMailer.qlibri_contact_email(@qlibri_contact).deliver
+        format.html { render :index } 
 	  else 
         format.html { render :index }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
 	  end	 
 	 end
   end

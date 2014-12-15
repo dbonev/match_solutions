@@ -9,4 +9,8 @@ class ProjectMailer < ActionMailer::Base
 		@subcontractor = subcontractor
 		mail(to: @subcontractor.email, subject: "#{@subcontractor.name}, thanks for applying for a contractor!", bcc: ["dimitar.bonev@gmail.com", "georgi.p.todorov@gmail.com"])
 	end
+	def qlibri_contact_email(qlibri_contact)
+		@qlibri_contact = qlibri_contact
+		mail(to: ["dimitar.bonev@gmail.com", "georgi.p.todorov@gmail.com"], subject: "#{@qlibri_contact.email}, just send a contact request")
+	end
 end
