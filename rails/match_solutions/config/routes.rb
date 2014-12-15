@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'qlibri/index'
   get 'qlibri/' => 'qlibri#index'
+  get 'company/' => 'qlibri#index'
 
   get 'qlibri/portfolio'
 
