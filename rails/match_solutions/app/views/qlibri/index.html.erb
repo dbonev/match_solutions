@@ -85,6 +85,7 @@
 				<div class="btn-container text-center">
 					
 					We love email. Drop us a few lines about what needs to be done at <a href="mailto:contact@getqlibri.com">contact@getqlibri.com </a> and we will be happy to discuss!
+					<%= render 'contact_form' %>
 				</div><!--//btn-container-->
 				<br/>
 				<br/>
@@ -93,3 +94,11 @@
 		</div>
 	</div>
 </section>
+<script>
+$('#contact_form').on('ajax:success', function(event, data, status, xhr) {
+	alert('success');
+});
+$('#contact_form').on('ajax:error', function(event, data, status, xhr) {
+	alert('error');
+});
+</script>
