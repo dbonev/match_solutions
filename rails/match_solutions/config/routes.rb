@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'techscreening/hr'
+
+  get 'techscreening/companies'
+
+  get 'techscreening/professionals'
+
   get 'qlibri/index'
   get 'qlibri/' => 'qlibri#index'
   get 'company/' => 'qlibri#index'
